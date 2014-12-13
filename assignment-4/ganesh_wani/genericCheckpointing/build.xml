@@ -1,0 +1,72 @@
+<project name="genericCheckpointing" default="compile" basedir=".">
+
+    <property name="build.compiler"       value="modern"/>
+    <property name="src"                  value="src"/>
+    <property name="BUILD"                value="build"/>
+    <property name="classes"              value="${BUILD}/classes"/>
+
+
+    <target name="compile"
+            depends="genericCheckpointing"/>
+
+    <target name="clean">
+        <delete dir="${BUILD}"/>
+        <delete dir="doc"/>
+    </target>
+
+    <!-- Prepare target directories -->
+    <target name="prepare" depends="clean">
+        <mkdir dir="${BUILD}"/>
+        <mkdir dir="${classes}"/>
+    </target>
+
+
+    <!-- ** means all subdirectories as well -->
+    <!-- * means all files in the current directory -->
+    <!-- for just java files use *.java -->
+
+    <target name="genericCheckpointing" depends="prepare">
+        <javac srcdir="${src}"
+               includes="genericCheckpointing/**"
+               excludes="**/package.html"
+               destdir="${classes}"
+               classpath="${classes}"
+               debug="on"
+               optimize="on"
+               deprecation="off"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="${BUILD}/jar"/>
+        <jar destfile="${BUILD}/jar/genericCheckpointing.jar" basedir="${BUILD}/classes">
+            <manifest>
+                <attribute name="Main-Class" value="genericCheckpointing.driver.Driver"/>
+            </manifest>
+        </jar>
+    </target>
+
+
+    <target name="run" depends="jar">
+        <java jar="${BUILD}/jar/genericCheckpointing.jar"  fork="true" jvmargs="-ea">
+            <arg value="${filename}"/>
+            <arg value="${UPDATE_VALUE}"/>
+            <assertions></assertions>
+        </java>
+    </target>
+
+    <target name="tarzip" depends="clean">
+        <tar destfile="${basedir}/Ganesh_Wani_assign2.tar.gz"
+             basedir="../."
+             includes="genericCheckpointing/**"
+             compression="gzip"/>
+    </target>
+
+    <target name="generate">
+        <mkdir dir="doc"/>
+    </target>
+
+    <target name="docs" depends="generate">
+        <javadoc sourcepath="src/" destdir="doc"/>
+    </target>
+
+</project>
