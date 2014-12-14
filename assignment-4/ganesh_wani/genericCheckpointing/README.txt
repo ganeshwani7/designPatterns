@@ -37,10 +37,10 @@ FILES:
 
 [
   folders:
-	util
+	genericCheckpointing.util
 	dataStore
 	factory
-	driver
+	genericCheckpointing.driver
 ]
 
 SAMPLE OUTPUT:

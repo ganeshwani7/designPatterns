@@ -40,7 +40,7 @@
         <mkdir dir="${BUILD}/jar"/>
         <jar destfile="${BUILD}/jar/genericCheckpointing.jar" basedir="${BUILD}/classes">
             <manifest>
-                <attribute name="Main-Class" value="genericCheckpointing.driver.Driver"/>
+                <attribute name="Main-Class" value="genericCheckpointing.genericCheckpointing.driver.Driver"/>
             </manifest>
         </jar>
     </target>
