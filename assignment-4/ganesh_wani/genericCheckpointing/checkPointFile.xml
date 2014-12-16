@@ -3,7 +3,7 @@
 		<myInt xsi:type="xsd:int">1</myInt>
 		<myString xsi:type="xsd:string">DP0</myString>
 		<myDouble xsi:type="xsd:double">24.35</myDouble>
-		<myLong xsi:type="xsd:long">24</myLong>
+		<myLong xsi:type="xsd:long">25</myLong>
 		<myChar xsi:type="xsd:char">p</myChar>
 	</complexType>
 </DPSerialization>
@@ -12,8 +12,8 @@
 		<myIntS xsi:type="xsd:int">2</myIntS>
 		<myStringS xsi:type="xsd:string">DP0</myStringS>
 		<myFloatS xsi:type="xsd:float">48.35</myFloatS>
-		<myShortS xsi:type="xsd:short">2</myShortS>
-		<myCharS xsi:type="xsd:char">p</myCharS>
+		<myShortS xsi:type="xsd:short">24</myShortS>
+		<myCharS xsi:type="xsd:char">q</myCharS>
 	</complexType>
 </DPSerialization>
 <DPSerialization>

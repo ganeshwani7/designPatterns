@@ -78,7 +78,7 @@ public class Driver {
                 vectorNew.add(myRecordRet);
                 // FIXME: store myRecordRet in the vector
             }
-            System.out.println("Vector size is : " + vectorNew.size());
+//            System.out.println("Vector size is : " + vectorNew.size());
             handler.closeFile();
             mismatchCount = checkVectors( vectorOld, vectorNew);
 //            System.out.println("Number of records mis-matched are : " + mismatchCount);

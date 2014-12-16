@@ -103,8 +103,8 @@ public class MyAllTypesFirst extends SerializableObject{
         result = myInt;
         result = 31 * result + (myString != null ? myString.hashCode() : 0);
         temp = Double.doubleToLongBits(myDouble);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (int) (myLong ^ (myLong >>> 32));
+        result = 31 * result + (int) (temp );
+        result = 31 * result + (int) (myLong );
         result = 31 * result + (int) myChar;
         return result;
     }
