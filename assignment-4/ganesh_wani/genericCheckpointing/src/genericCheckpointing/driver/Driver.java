@@ -29,6 +29,11 @@ public class Driver {
             System.exit(1);
         }
 
+        String type = args[2].toLowerCase();
+        if( !type.equals("ser") && !type.equals("deser") && !type.equals("serdeser")){
+            System.out.println("Please enter valid type of ser|deser|serdeser argument");
+            System.exit(1);
+        }
 
         ProxyCreator pc = new ProxyCreator();
         // create an instance of StoreRestoreHandler (which implements
@@ -58,7 +63,7 @@ public class Driver {
             vectorOld.add(mySecond);
         }
 
-        if( args[2].toLowerCase().equals("ser") ||
+        if( type.equals("ser") ||
                 args[2].toLowerCase().equals("serdeser")){
             handler.openWriteFile();
             for (int i=0; i< NUM_OF_OBJECTS ; i++) {
@@ -70,7 +75,7 @@ public class Driver {
             handler.closeWriteFile();
         }
 
-        if( args[2].toLowerCase().equals("deser") ||
+        if( type.equals("deser") ||
                 args[2].toLowerCase().equals("serdeser")){
             handler.openFile();
             for (int j=0; j < NUM_OF_OBJECTS * 2 ; j++) {
@@ -81,13 +86,12 @@ public class Driver {
 //            System.out.println("Vector size is : " + vectorNew.size());
             handler.closeFile();
             mismatchCount = checkVectors( vectorOld, vectorNew);
-//            System.out.println("Number of records mis-matched are : " + mismatchCount);
+                System.out.println("Number of records mis-matched are : " + mismatchCount);
         }
 
-        if( args[2].toLowerCase().equals("serdeser") ){
+        if (type.equals("serdeser") ){
             mismatchCount = checkVectors(vectorOld, vectorNew);
         }
-        System.out.println("Number of records mis-matched are : " + mismatchCount);
     }
 
     /**

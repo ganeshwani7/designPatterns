@@ -27,7 +27,9 @@ public class FileProcessor{
 		try{
 			line = in.readLine();
 		}catch( IOException ioe){
-			ioe.printStackTrace();
+		//	ioe.printStackTrace();
+			System.out.println("File not found with name : " + fileName + "  |  IOException");
+			System.exit(1);
 		}
 
 		return line;
@@ -37,7 +39,9 @@ public class FileProcessor{
 		try{
 			in = new BufferedReader( new FileReader( fileName ));
 		}catch( FileNotFoundException fex){
-			fex.printStackTrace();
+			//fex.printStackTrace();
+			System.out.println("File not found with name : " + fileName + " |  IOException");
+			System.exit(1);
 		}
 	}
 

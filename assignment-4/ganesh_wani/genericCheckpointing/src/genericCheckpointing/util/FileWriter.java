@@ -32,7 +32,9 @@ public class FileWriter {
 //            writer = new PrintWriter(new BufferedWriter( new java.io.FileWriter( fileName, true)));
             writer = new PrintWriter(fileName);
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("File not found with name : " + fileName + " | IOException");
+            System.exit(1);
         }
     }
 

@@ -12,7 +12,7 @@ e-mail(s): <gwani1@binghamton.edu>
 PURPOSE:
 
 [
- Design and implement Abstract Factory and Method pattern to generate Computer Component Manual
+ w
 ]
 
 PERCENT COMPLETE:
