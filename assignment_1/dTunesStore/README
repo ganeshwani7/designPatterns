@@ -1,0 +1,14 @@
+
+ant clean
+ant compile
+ant run
+
+  Document here how your TA can test your program after extracting your gzipped-
+  tarball. Be as clear as possible, refer to "... FOR DUMMIES" book format.
+  Assume your TA is completely lost, there is another universe. Here is a
+  sample:
+
+  Please run as: ./a.out <REGHOST> <REGPORT> <UNIQNAME>
+  For example:   ./a.out topaz 12345 binaenaleyh
+
+ ant run -Ddata_file_name=entries.txt -Dsearch_file_name=search_terms.txt -Dnumber_of_threads=4 -Ddebug_value=4

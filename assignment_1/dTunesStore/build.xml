@@ -1,0 +1,69 @@
+
+<project name="dTunesStore" default="compile" basedir=".">
+
+  <property name="build.compiler"              value="modern"/>
+  <property name="src"                  value="src"/>
+  <property name="BUILD"                value="build"/>
+  <property name="classes"              value="${BUILD}/classes"/>
+
+
+  <target name="compile"
+          depends="dTunesStore"/>
+
+  <target name="clean">
+       <delete dir="${BUILD}"/>
+  </target>
+
+  <!-- Prepare target directories -->
+  <target name="prepare" depends="clean">
+        <mkdir dir="${BUILD}"/>
+        <mkdir dir="${classes}"/>
+  </target>
+
+
+  <!-- ** means all subdirectories as well -->
+  <!-- * means all files in the current directory -->
+  <!-- for just java files use *.java -->
+
+  <target name="dTunesStore" depends="prepare">
+    <javac srcdir="${src}"
+           includes="dTunesStore/**"
+           excludes="**/package.html"
+           destdir="${classes}"
+           classpath="${classes}"
+           debug="on"
+           optimize="on"
+           deprecation="off"/>
+  </target>
+
+ <target name="jar" depends="compile">
+        <mkdir dir="${BUILD}/jar"/>
+        <jar destfile="${BUILD}/jar/dTunesStore.jar" basedir="${BUILD}/classes">
+            <manifest>
+                <attribute name="Main-Class" value="dTunesStore.driver.Driver"/>
+            </manifest>
+        </jar>
+ </target>
+
+
+<target name="run" depends="jar">
+        <java jar="${BUILD}/jar/dTunesStore.jar"  fork="true">
+	  <arg value="${data_file_name}"/>
+	  <arg value="${search_file_name}"/>
+      <arg value="${number_of_threads}"/>
+	  <arg value="${debug_value}"/>
+    <!--<arg value="4"/>
+          <arg value="5"/> -->
+
+	 </java>
+ </target>
+
+ <target name="generate">
+	<mkdir dir="doc"/>
+ </target>
+
+	<target name="docs" depends="generate">
+		<javadoc sourcepath="src/" destdir="doc"/>
+	</target>
+
+</project>

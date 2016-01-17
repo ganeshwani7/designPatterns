@@ -1,0 +1,72 @@
+
+<project name="myComputerManual" default="compile" basedir=".">
+
+  <property name="build.compiler"       value="modern"/>
+  <property name="src"                  value="src"/>
+  <property name="BUILD"                value="build"/>
+  <property name="classes"              value="${BUILD}/classes"/>
+
+
+  <target name="compile"
+          depends="myComputerManual"/>
+
+  <target name="clean">
+       <delete dir="${BUILD}"/>
+	   <delete dir="doc"/>
+  </target>
+
+  <!-- Prepare target directories -->
+  <target name="prepare" depends="clean">
+        <mkdir dir="${BUILD}"/>
+        <mkdir dir="${classes}"/>
+  </target>
+
+
+  <!-- ** means all subdirectories as well -->
+  <!-- * means all files in the current directory -->
+  <!-- for just java files use *.java -->
+
+  <target name="myComputerManual" depends="prepare">
+    <javac srcdir="${src}"
+           includes="myComputerManual/**"
+           excludes="**/package.html"
+           destdir="${classes}"
+           classpath="${classes}"
+           debug="on"
+           optimize="on"
+           deprecation="off"/>
+  </target>
+
+ <target name="jar" depends="compile">
+        <mkdir dir="${BUILD}/jar"/>
+        <jar destfile="${BUILD}/jar/myComputerManual.jar" basedir="${BUILD}/classes">
+            <manifest>
+                <attribute name="Main-Class" value="myComputerManual.driver.Driver"/>
+            </manifest>
+        </jar>
+ </target>
+
+
+<target name="run" depends="jar">
+        <java jar="${BUILD}/jar/myComputerManual.jar"  fork="true">
+	  <arg value="${debug_value}"/>
+
+	 </java>
+ </target>
+
+<target name="tarzip" depends="clean">
+    <tar destfile="${basedir}/Ganesh_Wani_assign2.tar.gz"
+    basedir="../."
+    includes="myComputerManual/**"
+    compression="gzip"/>
+</target>
+
+ <target name="generate">
+	<mkdir dir="doc"/>
+ </target>
+
+	<target name="docs" depends="generate">
+		<javadoc sourcepath="src/" destdir="doc"/>
+	</target>
+
+</project>
